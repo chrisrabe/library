@@ -7,7 +7,7 @@ const { TEST_DB_URL } = require('./constants');
 
 const AuthorModel = require('../model/author.model');
 
-describe('Author tests', () => {
+describe('Database Tests', () => {
   let authorId = undefined;
 
   before(done => {
@@ -25,66 +25,70 @@ describe('Author tests', () => {
     });
   });
 
-  it('should fail to create an author with missing first name', async () => {
-    const mockData = {
-      last_name: 'Rabe',
-    };
-    try {
+  // Author Database tests
+
+  describe('Author tests', () => {
+    it('should fail to create an author with missing first name', async () => {
+      const mockData = {
+        last_name: 'Rabe',
+      };
+      try {
+        const doc = await AuthorModel.createDoc(undefined, mockData);
+        expect(doc).to.be.equal(undefined);
+      } catch (e) {
+        expect(e.errorType).to.equal('badRequest');
+      }
+    });
+
+    it('should fail to create an author with missing last name', async () => {
+      const mockData = {
+        first_name: 'Chris',
+      };
+      try {
+        const doc = await AuthorModel.createDoc(undefined, mockData);
+        expect(doc).to.be.equal(undefined);
+      } catch (e) {
+        expect(e.errorType).to.equal('badRequest');
+      }
+    });
+
+    it('should create a new author', async () => {
+      const mockData = {
+        first_name: 'Chris',
+        last_name: 'Rabe',
+      };
       const doc = await AuthorModel.createDoc(undefined, mockData);
-      expect(doc).to.be.equal(undefined);
-    } catch (e) {
-      expect(e.errorType).to.equal('badRequest');
-    }
-  });
+      expect(doc.first_name).to.equal('Chris');
+      expect(doc.last_name).to.equal('Rabe');
+      authorId = doc._id;
+    });
 
-  it('should fail to create an author with missing last name', async () => {
-    const mockData = {
-      first_name: 'Chris',
-    };
-    try {
-      const doc = await AuthorModel.createDoc(undefined, mockData);
-      expect(doc).to.be.equal(undefined);
-    } catch (e) {
-      expect(e.errorType).to.equal('badRequest');
-    }
-  });
+    it('should have one doc in the author list', async () => {
+      const query = {};
+      const list = await AuthorModel.findDoc(undefined, query);
+      expect(list.length).to.be.equal(1);
+      const item = list[0];
+      expect(item).to.not.equal(undefined);
+      if (item) {
+        expect(item.first_name).to.equal('Chris');
+        expect(item.last_name).to.equal('Rabe');
+      }
+    });
 
-  it('should create a new author', async () => {
-    const mockData = {
-      first_name: 'Chris',
-      last_name: 'Rabe',
-    };
-    const doc = await AuthorModel.createDoc(undefined, mockData);
-    expect(doc.first_name).to.equal('Chris');
-    expect(doc.last_name).to.equal('Rabe');
-    authorId = doc._id;
-  });
-
-  it('should have one doc in the author list', async () => {
-    const query = {};
-    const list = await AuthorModel.findDoc(undefined, query);
-    expect(list.length).to.be.equal(1);
-    const item = list[0];
-    expect(item).to.not.equal(undefined);
-    if (item) {
-      expect(item.first_name).to.equal('Chris');
-      expect(item.last_name).to.equal('Rabe');
-    }
-  });
-
-  it('should be able to update author', async () => {
-    const update = {
-      $set: {
-        first_name: 'Brian',
-      },
-    };
-    const author = await AuthorModel.findByIdAndUpdateDoc(
-      undefined,
-      authorId,
-      update,
-    );
-    expect(author.first_name).to.be.equal('Brian');
-    expect(author.last_name).to.be.equal('Rabe');
+    it('should be able to update author', async () => {
+      const update = {
+        $set: {
+          first_name: 'Brian',
+        },
+      };
+      const author = await AuthorModel.findByIdAndUpdateDoc(
+        undefined,
+        authorId,
+        update,
+      );
+      expect(author.first_name).to.be.equal('Brian');
+      expect(author.last_name).to.be.equal('Rabe');
+    });
   });
 
   after(done => {
