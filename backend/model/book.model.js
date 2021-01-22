@@ -15,6 +15,7 @@ const model = modelFactory.generate(schemaName, {
   author: {
     type: Schema.Types.ObjectId,
     required: true,
+    ref: 'Author',
   },
 });
 

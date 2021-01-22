@@ -7,7 +7,9 @@ exports.list = async req => {
 
 exports.details = async req => {
   const { id } = req.params;
-  return BookModel.findByIdDoc(req, id);
+  const options = {};
+  const fieldsToPopulate = ['author'];
+  return BookModel.findByIdDoc(req, id, options, fieldsToPopulate);
 };
 
 exports.create = async req => {
