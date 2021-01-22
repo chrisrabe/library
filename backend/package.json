@@ -4,7 +4,9 @@
   "description": "Server component of Library app",
   "main": "index.js",
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "test": "mocha --recursive tests --reporter dot",
+    "test-watch": "mocha --recursive tests --reporter min --watch"
   },
   "author": "",
   "license": "ISC",
@@ -26,7 +28,9 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
     "eslint": "^7.18.0",
+    "mocha": "^8.2.1",
     "prettier": "^2.2.1"
   }
 }
