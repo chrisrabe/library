@@ -7,7 +7,6 @@ const baseJoi = require('joi');
 const objectId = require('joi-objectid');
 
 // extensions
-const joi = baseJoi.extend(objectId);
-joi.objectId = objectId(joi);
+baseJoi.objectId = objectId(baseJoi);
 
-module.exports = joi;
+module.exports = baseJoi;
