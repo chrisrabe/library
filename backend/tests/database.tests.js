@@ -1,0 +1,95 @@
+// Before starting the test,
+// please ensure to run the start-dbs.sh script
+
+const mongoose = require('mongoose');
+const expect = require('chai').expect;
+const { TEST_DB_URL } = require('./constants');
+
+const AuthorModel = require('../model/author.model');
+
+describe('Author tests', () => {
+  let authorId = undefined;
+
+  before(done => {
+    mongoose.connect(TEST_DB_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useFindAndModify: false,
+      useCreateIndex: true,
+    });
+    const db = mongoose.connection;
+    db.on('error', console.error.bind(console, 'connection error'));
+    db.once('open', () => {
+      console.log('We are connected to test database!');
+      done();
+    });
+  });
+
+  it('should fail to create an author with missing first name', async () => {
+    const mockData = {
+      last_name: 'Rabe',
+    };
+    try {
+      const doc = await AuthorModel.createDoc(undefined, mockData);
+      expect(doc).to.be.equal(undefined);
+    } catch (e) {
+      expect(e.errorType).to.equal('badRequest');
+    }
+  });
+
+  it('should fail to create an author with missing last name', async () => {
+    const mockData = {
+      first_name: 'Chris',
+    };
+    try {
+      const doc = await AuthorModel.createDoc(undefined, mockData);
+      expect(doc).to.be.equal(undefined);
+    } catch (e) {
+      expect(e.errorType).to.equal('badRequest');
+    }
+  });
+
+  it('should create a new author', async () => {
+    const mockData = {
+      first_name: 'Chris',
+      last_name: 'Rabe',
+    };
+    const doc = await AuthorModel.createDoc(undefined, mockData);
+    expect(doc.first_name).to.equal('Chris');
+    expect(doc.last_name).to.equal('Rabe');
+    authorId = doc._id;
+  });
+
+  it('should have one doc in the author list', async () => {
+    const query = {};
+    const list = await AuthorModel.findDoc(undefined, query);
+    expect(list.length).to.be.equal(1);
+    const item = list[0];
+    expect(item).to.not.equal(undefined);
+    if (item) {
+      expect(item.first_name).to.equal('Chris');
+      expect(item.last_name).to.equal('Rabe');
+    }
+  });
+
+  it('should be able to update author', async () => {
+    const update = {
+      $set: {
+        first_name: 'Brian',
+      },
+    };
+    const author = await AuthorModel.findByIdAndUpdateDoc(
+      undefined,
+      authorId,
+      update,
+    );
+    expect(author.first_name).to.be.equal('Brian');
+    expect(author.last_name).to.be.equal('Rabe');
+  });
+
+  after(done => {
+    mongoose.connection.db.dropDatabase(() => {
+      mongoose.connection.close(done);
+    });
+  });
+});
