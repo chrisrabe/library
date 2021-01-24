@@ -1,16 +1,7 @@
 import { IconButton } from '@material-ui/core';
-import styled, { keyframes } from 'styled-components';
-import colors from 'theme/colors';
-
-const grow = keyframes`
-  from {
-    transform: scale(1);
-  }
-
-  to {
-    transform: scale(1.2);
-  }
-`;
+import styled from 'styled-components';
+import colors from 'utils/colors';
+import { pulsate } from 'utils/keyframes';
 
 export const StyledIconButton = styled(IconButton)`
   color: ${(props) => props.theme.palette.text.primary};
@@ -18,7 +9,7 @@ export const StyledIconButton = styled(IconButton)`
   margin: 0px 10px;
 
   :hover {
-    animation: ${grow} 800ms ease-in infinite alternate;
+    animation: ${pulsate} 800ms ease-in infinite alternate;
     background-color: ${colors.darkAccent};
   }
 `;

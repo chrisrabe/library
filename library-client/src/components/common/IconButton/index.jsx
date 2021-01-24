@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyledIconButton } from 'components/common/IconButton/styles';
+import { StyledIconButton } from './styles';
 
 const IconButton = ({ children, onClick }) => (
   <StyledIconButton onClick={onClick}>{children}</StyledIconButton>

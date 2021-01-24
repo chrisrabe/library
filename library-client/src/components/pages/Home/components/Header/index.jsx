@@ -1,13 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
 import IconButton from 'components/common/IconButton';
 import { Help, MusicNote } from '@material-ui/icons';
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-`;
+import { Container } from './styles';
 
 const Header = () => (
   <Container>

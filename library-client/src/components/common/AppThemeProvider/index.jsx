@@ -6,7 +6,7 @@ import {
   NoSsr,
 } from '@material-ui/core';
 import { ThemeProvider } from 'styled-components';
-import { theme, muiTheme } from 'theme';
+import { theme, muiTheme } from 'utils/theme';
 
 const AppThemeProvider = ({ children }) => (
   <StylesProvider injectFirst>
