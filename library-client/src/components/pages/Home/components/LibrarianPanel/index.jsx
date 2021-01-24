@@ -17,18 +17,17 @@ const LibrarianPanel = () => {
   return (
     <Container>
       <SignText variant="h2">Library</SignText>
-      <ImageContainer>
+      <ImageContainer
+        onMouseEnter={() => setIsOptionsVisible(true)}
+        onMouseLeave={() => setIsOptionsVisible(false)}
+      >
         {isOptionsVisible && (
           <OptionsContainer>
             <OptionsList options={options} />
           </OptionsContainer>
         )}
-        <StyledTooltip title="Click to interact with librarian" placement="top">
-          <LibrarianImage
-            src={Librarian}
-            alt="Librarian"
-            onClick={() => setIsOptionsVisible(!isOptionsVisible)}
-          />
+        <StyledTooltip title="Hello! I'm Arthuro. How can I help?" placement="top">
+          <LibrarianImage src={Librarian} alt="Librarian" />
         </StyledTooltip>
       </ImageContainer>
     </Container>

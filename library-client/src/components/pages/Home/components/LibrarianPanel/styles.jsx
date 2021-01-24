@@ -16,6 +16,7 @@ export const StyledTooltip = styled((props) => (
     color: ${colors.dark};
     background-color: ${colors.success};
     font-size: 20px;
+    text-align: center;
   }
 `;
 
