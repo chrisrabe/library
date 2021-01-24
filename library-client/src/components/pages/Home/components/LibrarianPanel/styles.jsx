@@ -1,9 +1,23 @@
+import React from 'react';
 import styled from 'styled-components';
-import { Typography } from '@material-ui/core';
+import { Typography, Tooltip } from '@material-ui/core';
 import colors from 'utils/colors';
 import { getPulsateFrames } from 'utils/keyframes';
 
 const pulsate = getPulsateFrames(1, 1.02);
+
+export const StyledTooltip = styled((props) => (
+  <Tooltip
+    classes={{ popper: props.className, tooltip: 'tooltip' }}
+    {...props}
+  />
+))`
+  & .tooltip {
+    color: ${colors.dark};
+    background-color: ${colors.success};
+    font-size: 20px;
+  }
+`;
 
 export const Container = styled.div`
   display: flex;
@@ -30,4 +44,9 @@ export const LibrarianImage = styled.img`
     cursor: pointer;
     animation: ${pulsate} 800ms ease-in infinite alternate;
   }
+`;
+
+export const OptionsContainer = styled.div`
+  position: absolute;
+  z-index: 1;
 `;
