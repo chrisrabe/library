@@ -1,7 +1,9 @@
 import { IconButton } from '@material-ui/core';
 import styled from 'styled-components';
 import colors from 'utils/colors';
-import { pulsate } from 'utils/keyframes';
+import { getPulsateFrames } from 'utils/keyframes';
+
+const pulsate = getPulsateFrames(1, 1.2);
 
 export const StyledIconButton = styled(IconButton)`
   color: ${(props) => props.theme.palette.text.primary};

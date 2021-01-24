@@ -1,21 +1,26 @@
 import React from 'react';
-import Librarian from 'assets/librarian.svg';
 import styled from 'styled-components';
-import Header from 'components/pages/Home/components/Header';
+import Header from './components/Header';
+import BookPanel from './components/BookPanel';
+import LibrarianPanel from './components/LibrarianPanel';
 
 const Container = styled.div`
   height: 100%;
 `;
 
+const Content = styled.div`
+  display: flex;
+  flex-direction: row;
+  height: calc(100% - 50px);
+`;
+
 const Home = () => (
   <Container>
     <Header />
-    <div>
-      <p>Something</p>
-    </div>
-    <div>
-      <img src={Librarian} alt="Librarian" />
-    </div>
+    <Content>
+      <BookPanel />
+      <LibrarianPanel />
+    </Content>
   </Container>
 );
 

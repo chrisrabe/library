@@ -1,11 +1,11 @@
 import { keyframes } from 'styled-components';
 
-export const pulsate = keyframes`
+export const getPulsateFrames = (fromScale, toScale) => keyframes`
   from {
-    transform: scale(1);
+    transform: scale(${fromScale});
   }
 
   to {
-    transform: scale(1.2);
+    transform: scale(${toScale});
   }
 `;
