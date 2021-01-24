@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Home from 'components/pages/Home';
 
 const Container = styled.div`
-  padding: 20px;
+  padding: 40px;
   height: 100vh;
 `;
 
