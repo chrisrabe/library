@@ -8,7 +8,7 @@ const pulsate = getPulsateFrames(1, 1.02);
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 25%;
   height: 100%;
   align-items: center;
   justify-content: flex-end;

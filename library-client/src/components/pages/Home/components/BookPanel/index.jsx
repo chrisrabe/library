@@ -7,16 +7,16 @@ import BookShelf from './components/BookShelf';
 const Container = styled.div`
   display: flex;
   flex-direction: row;
-  width: 60%;
+  width: 75%;
   height: 100%;
 `;
 
 const ShelfContainer = styled.div`
-  width: 80%;
+  width: 90%;
 `;
 
 const NavContainer = styled.div`
-  width: 20%;
+  width: 10%;
 `;
 
 const ButtonContainer = styled.div`
