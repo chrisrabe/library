@@ -18,7 +18,7 @@ const BookShelf = ({ books, currentPage }) => {
     const row4 = bookSubset.slice(120, 160);
     const newRows = [row1, row2, row3, row4];
     setRows(newRows);
-  }, [books, setRows]);
+  }, [books, setRows, currentPage]);
 
   return (
     <Container>
