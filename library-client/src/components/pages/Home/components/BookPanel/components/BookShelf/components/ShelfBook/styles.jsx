@@ -24,4 +24,8 @@ export const Container = styled(({ offset, color, ...rest }) => (
 export const StyledButton = styled(Button)`
   background-color: ${colors.light};
   animation: ${buttonPulsate} 800ms ease-in infinite alternate;
+
+  :hover {
+    background-color: ${colors.secondary};
+  }
 `;

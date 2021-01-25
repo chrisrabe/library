@@ -10,7 +10,7 @@ const BookDetails = ({ color }) => (
       <FrontPage title="The little prince" author="Antoine de Saint-Exupery" />
     </BookPage>
     <BookPage color={color}>
-      <BackPage />
+      <BackPage isbn="ISBN: 23125-4141-2312" />
     </BookPage>
   </Container>
 );

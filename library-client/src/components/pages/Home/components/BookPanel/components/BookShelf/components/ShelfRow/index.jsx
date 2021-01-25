@@ -1,9 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Container, BookContainer, LabelContainer } from './styles';
 import ShelfBook from '../ShelfBook/container';
 
-const ShelfRow = () => {
-  const books = new Array(40).fill(1);
+const ShelfRow = ({ books }) => {
   return (
     <Container>
       <BookContainer>
@@ -14,6 +14,10 @@ const ShelfRow = () => {
       <LabelContainer />
     </Container>
   );
+};
+
+ShelfRow.propTypes = {
+  books: PropTypes.array.isRequired,
 };
 
 export default ShelfRow;
