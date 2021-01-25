@@ -17,6 +17,7 @@ used to implement the backend component, and React is used to implement the fron
 ## Setting up local backend
 ```shell
 cd backend
+npm install
 ./scripts/start-db.sh # creates mongo container
 npm run populate-db # populate database with values
 npm start # start the backend server
