@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Dialog from 'components/common/Dialog';
-import Header from './components/Header';
+import Header from './components/Header/container';
 import BookPanel from './components/BookPanel';
 import LibrarianPanel from './components/LibrarianPanel/container';
 import { Container, Content } from './styles';
