@@ -1,9 +1,10 @@
 import React, { useCallback, useLayoutEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import colors from 'utils/colors';
 import BookDetails from 'components/pages/Home/components/BookDetails';
-import { Container } from './styles';
+import { Container, StyledButton } from './styles';
 
-const ShelfBook = () => {
+const ShelfBook = ({ setData, setIsOpen }) => {
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [color, setColor] = useState(undefined);
 
@@ -27,7 +28,20 @@ const ShelfBook = () => {
     getColor();
   }, [setOffset, getColor]);
 
-  return <Container offset={offset} color={color} />;
+  const handleClick = useCallback(() => {
+    const data = {
+      content: <BookDetails color={color} />,
+      actions: <StyledButton>Update book</StyledButton>,
+    };
+    setData(data);
+    setIsOpen(true);
+  }, [setData, setIsOpen, color]);
+
+  return <Container offset={offset} color={color} onClick={handleClick} />;
 };
 
+ShelfBook.propTypes = {
+  setData: PropTypes.func.isRequired,
+  setIsOpen: PropTypes.func.isRequired,
+};
 export default ShelfBook;

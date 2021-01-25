@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, BookContainer, LabelContainer } from './styles';
-import ShelfBook from '../ShelfBook';
+import ShelfBook from '../ShelfBook/container';
 
 const ShelfRow = () => {
   const books = new Array(40).fill(1);
