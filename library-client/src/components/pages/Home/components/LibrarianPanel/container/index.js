@@ -3,9 +3,7 @@ import { setIsOpen, setData } from 'redux/slices/dialog.slice';
 import { setSelectedBook } from 'redux/slices/book.slice';
 import LibrarianPanel from '../index';
 
-const mapStateToProps = (state) => ({
-  books: state.book.books,
-});
+const mapStateToProps = () => ({});
 
 const mapDispatch = { setIsOpen, setData, setSelectedBook };
 

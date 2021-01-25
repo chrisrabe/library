@@ -10,10 +10,10 @@ import {
   OptionsContainer,
   StyledTooltip,
 } from 'components/pages/Home/components/LibrarianPanel/styles';
-import BookList from 'components/pages/Home/components/BookList';
-import FormRequest from 'components/pages/Home/components/FormRequest';
+import BookList from 'components/pages/Home/components/BookList/container';
+import FormRequest from 'components/pages/Home/components/FormRequest/container';
 
-const LibrarianPanel = ({ books, setData, setIsOpen, setSelectedBook }) => {
+const LibrarianPanel = ({ setData, setIsOpen, setSelectedBook }) => {
   const [isOptionsVisible, setIsOptionsVisible] = useState(false);
 
   const options = [
@@ -21,7 +21,7 @@ const LibrarianPanel = ({ books, setData, setIsOpen, setSelectedBook }) => {
       text: 'List all books',
       onClick: () => {
         const data = {
-          content: <BookList books={books} />,
+          content: <BookList />,
         };
         setData(data);
         setIsOpen(true);

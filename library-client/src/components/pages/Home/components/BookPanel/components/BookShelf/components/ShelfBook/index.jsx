@@ -1,7 +1,7 @@
 import React, { useCallback, useLayoutEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import colors from 'utils/colors';
+import colors, { getBookColor } from 'utils/colors';
 import BookDetails from 'components/pages/Home/components/BookDetails/container';
 import FormRequest from 'components/pages/Home/components/FormRequest/container';
 import { Container, StyledButton } from './styles';
@@ -22,16 +22,8 @@ const ShelfBook = ({ book, setData, setIsOpen, fetchBookDetails }) => {
   const [color, setColor] = useState(undefined);
 
   const getColor = useCallback(() => {
-    const colorChance = Math.round(Math.random() * 100);
-    if (colorChance >= 0 && colorChance < 25) {
-      setColor(colors.light);
-    } else if (colorChance >= 25 && colorChance < 50) {
-      setColor(colors.darkAccent);
-    } else if (colorChance >= 50 && colorChance < 75) {
-      setColor(colors.primary);
-    } else {
-      setColor(colors.secondary);
-    }
+    const bookColor = getBookColor();
+    setColor(bookColor);
   }, [setColor]);
 
   useLayoutEffect(() => {
@@ -43,7 +35,7 @@ const ShelfBook = ({ book, setData, setIsOpen, fetchBookDetails }) => {
 
   const handleUpdate = useCallback(() => {
     const data = {
-      content: <FormRequest color={color} headingText="Book Update Request" />,
+      content: <FormRequest headingText="Book Update Request" />,
     };
     setData(data);
   }, [setData, book]);

@@ -8,4 +8,17 @@ const colors = {
   bg: '#516168',
 };
 
+export const getBookColor = () => {
+  const colorChance = Math.round(Math.random() * 100);
+  if (colorChance >= 0 && colorChance < 25) {
+    return colors.light;
+  } else if (colorChance >= 25 && colorChance < 50) {
+    return colors.darkAccent;
+  } else if (colorChance >= 50 && colorChance < 75) {
+    return colors.primary;
+  } else {
+    return colors.secondary;
+  }
+};
+
 export default colors;
