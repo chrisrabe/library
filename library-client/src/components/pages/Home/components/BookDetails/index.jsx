@@ -1,8 +1,9 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { StyledDialog, BookPage } from './styles';
+import { DialogActions } from '@material-ui/core';
 import FrontPage from './components/FrontPage';
 import BackPage from './components/BackPage';
+import { StyledDialog, BookPage, StyledButton } from './styles';
 
 const BookDetails = ({ color, isOpen, setIsOpen }) => {
   const handleClose = useCallback(() => {
@@ -26,6 +27,9 @@ const BookDetails = ({ color, isOpen, setIsOpen }) => {
           <BackPage />
         </BookPage>
       </div>
+      <DialogActions>
+        <StyledButton variant="contained">Update Book</StyledButton>
+      </DialogActions>
     </StyledDialog>
   );
 };

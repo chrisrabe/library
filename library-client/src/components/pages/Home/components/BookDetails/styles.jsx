@@ -1,6 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Dialog } from '@material-ui/core';
+import { Dialog, Button } from '@material-ui/core';
+import colors from 'utils/colors';
+import { getPulsateFrames } from 'utils/keyframes';
+
+const pulsate = getPulsateFrames(1, 1.05);
+
+export const StyledButton = styled(Button)`
+  background-color: ${colors.light};
+  animation: ${pulsate} 800ms ease-in infinite alternate;
+`;
 
 export const StyledDialog = styled(Dialog)`
   width: 100%;
