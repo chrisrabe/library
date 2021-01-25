@@ -24,7 +24,7 @@ const bookSlice = createSlice({
       state.error = action.payload;
     },
     setSelectedBook(state, action) {
-      state.selectedBook = action;
+      state.selectedBook = action.payload;
       state.isLoadingDetails = false;
     },
     setBooks(state, action) {

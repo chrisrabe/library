@@ -2,7 +2,7 @@ import React, { useCallback, useLayoutEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import colors from 'utils/colors';
-import BookDetails from 'components/pages/Home/components/BookDetails';
+import BookDetails from 'components/pages/Home/components/BookDetails/container';
 import { Container, StyledButton } from './styles';
 
 const TitleText = styled.div`
@@ -16,7 +16,7 @@ const TitleText = styled.div`
   padding: 10px;
 `;
 
-const ShelfBook = ({ book, setData, setIsOpen }) => {
+const ShelfBook = ({ book, setData, setIsOpen, fetchBookDetails }) => {
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [color, setColor] = useState(undefined);
 
@@ -41,13 +41,14 @@ const ShelfBook = ({ book, setData, setIsOpen }) => {
   }, [setOffset, getColor]);
 
   const handleClick = useCallback(() => {
+    fetchBookDetails(book.id);
     const data = {
       content: <BookDetails color={color} />,
       actions: <StyledButton>Update book</StyledButton>,
     };
     setData(data);
     setIsOpen(true);
-  }, [setData, setIsOpen, color]);
+  }, [setData, setIsOpen, color, book]);
 
   return (
     <Container offset={offset} color={color} onClick={handleClick}>
@@ -60,5 +61,6 @@ ShelfBook.propTypes = {
   setData: PropTypes.func.isRequired,
   setIsOpen: PropTypes.func.isRequired,
   book: PropTypes.object.isRequired,
+  fetchBookDetails: PropTypes.func.isRequired,
 };
 export default ShelfBook;
