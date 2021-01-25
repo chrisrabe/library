@@ -30,7 +30,7 @@ const BookDetails = ({ color, selectedBook }) => {
 
 BookDetails.propTypes = {
   color: PropTypes.string.isRequired,
-  selectedBook: PropTypes.object.isRequired,
+  selectedBook: PropTypes.object,
 };
 
 export default BookDetails;

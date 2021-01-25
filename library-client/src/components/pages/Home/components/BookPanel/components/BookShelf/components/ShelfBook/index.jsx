@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import colors from 'utils/colors';
 import BookDetails from 'components/pages/Home/components/BookDetails/container';
+import FormRequest from 'components/pages/Home/components/FormRequest';
 import { Container, StyledButton } from './styles';
 
 const TitleText = styled.div`
@@ -38,17 +39,24 @@ const ShelfBook = ({ book, setData, setIsOpen, fetchBookDetails }) => {
     const xOffset = Math.random() * 20;
     setOffset({ x: xOffset, y: yOffset });
     getColor();
-  }, [setOffset, getColor]);
+  }, [setOffset, getColor, book]);
+
+  const handleUpdate = useCallback(() => {
+    const data = {
+      content: <FormRequest color={color} headingText="Book Update Request" />,
+    };
+    setData(data);
+  }, [setData]);
 
   const handleClick = useCallback(() => {
     fetchBookDetails(book.id);
     const data = {
       content: <BookDetails color={color} />,
-      actions: <StyledButton>Update book</StyledButton>,
+      actions: <StyledButton onClick={handleUpdate}>Update book</StyledButton>,
     };
     setData(data);
     setIsOpen(true);
-  }, [setData, setIsOpen, color, book]);
+  }, [setData, setIsOpen, color, book, handleUpdate]);
 
   return (
     <Container offset={offset} color={color} onClick={handleClick}>

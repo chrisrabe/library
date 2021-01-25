@@ -36,4 +36,5 @@ export const BarCode = styled.div`
   font-weight: bold;
   display: flex;
   align-items: center;
+  justify-content: center;
 `;
