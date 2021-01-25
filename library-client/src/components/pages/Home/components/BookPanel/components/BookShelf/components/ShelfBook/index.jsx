@@ -1,10 +1,22 @@
 import React, { useCallback, useLayoutEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import colors from 'utils/colors';
 import BookDetails from 'components/pages/Home/components/BookDetails';
 import { Container, StyledButton } from './styles';
 
-const ShelfBook = ({ setData, setIsOpen }) => {
+const TitleText = styled.div`
+  position: absolute;
+  top: calc(100% + 5px);
+  left: -100%;
+  font-size: 12px;
+  text-align: center;
+  background-color: ${colors.success};
+  border-radius: 10px;
+  padding: 10px;
+`;
+
+const ShelfBook = ({ book, setData, setIsOpen }) => {
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [color, setColor] = useState(undefined);
 
@@ -37,11 +49,16 @@ const ShelfBook = ({ setData, setIsOpen }) => {
     setIsOpen(true);
   }, [setData, setIsOpen, color]);
 
-  return <Container offset={offset} color={color} onClick={handleClick} />;
+  return (
+    <Container offset={offset} color={color} onClick={handleClick}>
+      <TitleText>{book.name}</TitleText>
+    </Container>
+  );
 };
 
 ShelfBook.propTypes = {
   setData: PropTypes.func.isRequired,
   setIsOpen: PropTypes.func.isRequired,
+  book: PropTypes.object.isRequired,
 };
 export default ShelfBook;
