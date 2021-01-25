@@ -45,4 +45,5 @@ export const SubmitButton = styled.input`
   border-radius: 5px;
   text-transform: uppercase;
   font-weight: bold;
+  cursor: pointer;
 `;

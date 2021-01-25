@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import colors from 'utils/colors';
 import BookDetails from 'components/pages/Home/components/BookDetails/container';
-import FormRequest from 'components/pages/Home/components/FormRequest';
+import FormRequest from 'components/pages/Home/components/FormRequest/container';
 import { Container, StyledButton } from './styles';
 
 const TitleText = styled.div`
@@ -46,7 +46,7 @@ const ShelfBook = ({ book, setData, setIsOpen, fetchBookDetails }) => {
       content: <FormRequest color={color} headingText="Book Update Request" />,
     };
     setData(data);
-  }, [setData]);
+  }, [setData, book]);
 
   const handleClick = useCallback(() => {
     fetchBookDetails(book.id);

@@ -11,19 +11,30 @@ import {
   ButtonContainer,
 } from './styles';
 
-const FormRequest = ({ headingText, formValues, item, onSubmit }) => {
+const FormRequest = ({ headingText, onSubmit, selectedBook }) => {
   const { control, handleSubmit, errors } = useForm({
-    defaultValues: formValues,
+    defaultValues: {
+      name: selectedBook ? selectedBook.name : '',
+      isbn: selectedBook ? selectedBook.isbn : '',
+      firstname:
+        selectedBook && selectedBook.author
+          ? selectedBook.author.first_name
+          : '',
+      lastname:
+        selectedBook && selectedBook.author
+          ? selectedBook.author.last_name
+          : '',
+    },
   });
 
   const onValid = useCallback(
     (data) => {
       console.log(data);
       if (onSubmit) {
-        onSubmit(data, item);
+        onSubmit(data, selectedBook);
       }
     },
-    [item, onSubmit],
+    [selectedBook, onSubmit],
   );
 
   return (
@@ -86,18 +97,8 @@ const FormRequest = ({ headingText, formValues, item, onSubmit }) => {
 
 FormRequest.propTypes = {
   headingText: PropTypes.string.isRequired,
-  formValues: PropTypes.object,
-  item: PropTypes.any,
   onSubmit: PropTypes.func,
-};
-
-FormRequest.defaultProps = {
-  formValues: {
-    name: '',
-    isbn: '',
-    firstname: '',
-    lastname: '',
-  },
+  selectedBook: PropTypes.object,
 };
 
 export default FormRequest;
