@@ -37,11 +37,10 @@ const bookSlice = createSlice({
   },
 });
 
-export const { setCurrentPage } = bookSlice.actions;
+export const { setCurrentPage, setSelectedBook } = bookSlice.actions;
 
 const {
   setBooks,
-  setSelectedBook,
   fetchBooksStart,
   fetchBookDetailsStart,
   setError,

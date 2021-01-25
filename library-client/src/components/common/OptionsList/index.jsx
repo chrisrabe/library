@@ -33,8 +33,12 @@ const OptionsList = ({ options }) => {
   return (
     <List>
       {options.map((option, index) => (
-        <StyledListItem key={`option-${index}`} button>
-          {option}
+        <StyledListItem
+          key={`option-${index}`}
+          button
+          onClick={() => option.onClick(option.value)}
+        >
+          {option.text}
         </StyledListItem>
       ))}
     </List>

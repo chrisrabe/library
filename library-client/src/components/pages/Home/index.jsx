@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Dialog from 'components/common/Dialog';
 import Header from './components/Header';
 import BookPanel from './components/BookPanel';
-import LibrarianPanel from './components/LibrarianPanel';
+import LibrarianPanel from './components/LibrarianPanel/container';
 import { Container, Content } from './styles';
 
 const Home = ({ isOpen, setIsOpen, dialogData, fetchBooks }) => {
