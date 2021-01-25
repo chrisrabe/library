@@ -1,8 +1,10 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useLayoutEffect, useState } from 'react';
 import colors from 'utils/colors';
-import { Container } from 'components/pages/Home/components/BookPanel/components/BookShelf/components/ShelfBook/styles';
+import BookDetails from 'components/pages/Home/components/BookDetails';
+import { Container } from './styles';
 
 const ShelfBook = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [color, setColor] = useState(undefined);
 
@@ -19,14 +21,23 @@ const ShelfBook = () => {
     }
   }, [setColor]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const yOffset = Math.random() * 20;
     const xOffset = Math.random() * 20;
     setOffset({ x: xOffset, y: yOffset });
     getColor();
   }, [setOffset, getColor]);
 
-  return <Container offset={offset} color={color} />;
+  return (
+    <>
+      <Container
+        offset={offset}
+        color={color}
+        onClick={() => setIsOpen(true)}
+      />
+      <BookDetails setIsOpen={setIsOpen} isOpen={isOpen} color={color} />
+    </>
+  );
 };
 
 export default ShelfBook;
