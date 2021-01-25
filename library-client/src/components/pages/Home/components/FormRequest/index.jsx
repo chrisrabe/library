@@ -29,7 +29,6 @@ const FormRequest = ({ headingText, onSubmit, selectedBook }) => {
 
   const onValid = useCallback(
     (data) => {
-      console.log(data);
       if (onSubmit) {
         onSubmit(data, selectedBook);
       }

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, TitleText, AuthorText } from './styles';
 
-const FrontPage = ({title, author}) => (
+const FrontPage = ({ title, author }) => (
   <Container>
     <TitleText>{title}</TitleText>
     <AuthorText>{author}</AuthorText>

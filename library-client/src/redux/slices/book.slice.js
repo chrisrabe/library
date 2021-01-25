@@ -31,13 +31,16 @@ const bookSlice = createSlice({
       state.books = action.payload;
       state.isLoadingBooks = false;
     },
+    addBook(state, action) {
+      state.books.push(action.payload);
+    },
     setCurrentPage(state, action) {
       state.currentPage = action.payload;
     },
   },
 });
 
-export const { setCurrentPage, setSelectedBook } = bookSlice.actions;
+export const { setCurrentPage, setSelectedBook, addBook } = bookSlice.actions;
 
 const {
   setBooks,
