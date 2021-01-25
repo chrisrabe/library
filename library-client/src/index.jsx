@@ -2,15 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import ErrorBoundary from 'components/common/ErrorBoundary';
+import AppProvider from 'components/common/AppProvider';
 import AppThemeProvider from 'components/common/AppThemeProvider';
 import reportWebVitals from './reportWebVitals';
 import App from './App';
 
 ReactDOM.render(
   <ErrorBoundary>
-    <AppThemeProvider>
-      <App />
-    </AppThemeProvider>
+    <AppProvider>
+      <AppThemeProvider>
+        <App />
+      </AppThemeProvider>
+    </AppProvider>
   </ErrorBoundary>,
   document.getElementById('root'),
 );

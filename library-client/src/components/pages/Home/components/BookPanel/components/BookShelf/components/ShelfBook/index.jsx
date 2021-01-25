@@ -4,7 +4,6 @@ import BookDetails from 'components/pages/Home/components/BookDetails';
 import { Container } from './styles';
 
 const ShelfBook = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [color, setColor] = useState(undefined);
 
@@ -28,16 +27,7 @@ const ShelfBook = () => {
     getColor();
   }, [setOffset, getColor]);
 
-  return (
-    <>
-      <Container
-        offset={offset}
-        color={color}
-        onClick={() => setIsOpen(true)}
-      />
-      <BookDetails setIsOpen={setIsOpen} isOpen={isOpen} color={color} />
-    </>
-  );
+  return <Container offset={offset} color={color} />;
 };
 
 export default ShelfBook;
