@@ -31,3 +31,24 @@ export const postCreateBook = async (data) => {
   const { data: bookData } = await axios.post(bookUrl, bookPayload);
   return bookData.book;
 };
+
+export const updateBook = async (data, bookData) => {
+  const { name, isbn, firstname, lastname } = data;
+  const authorId = bookData.author.id;
+  const bookId = bookData.id;
+  const authorUrl = `${config.server.baseUrl}${config.server.api.v1}/authors/${authorId}`;
+  const bookUrl = `${config.server.baseUrl}${config.server.api.v1}/books/${bookId}`;
+  // update author
+  const authorPayload = {
+    firstName: firstname,
+    lastName: lastname,
+  };
+  await axios.put(authorUrl, authorPayload);
+  // update book
+  const bookPayload = {
+    name,
+    isbn,
+  };
+  const { data: bookRes } = await axios.put(bookUrl, bookPayload);
+  return bookRes.book;
+};

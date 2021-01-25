@@ -34,13 +34,27 @@ const bookSlice = createSlice({
     addBook(state, action) {
       state.books.push(action.payload);
     },
+    setBook(state, action) {
+      const { id, data } = action.payload;
+      const bookIdx = state.books.findIndex((book) => book.id === id);
+      if (bookIdx >= 0) {
+        state.books[bookIdx] = data;
+      } else {
+        state.books.push(data);
+      }
+    },
     setCurrentPage(state, action) {
       state.currentPage = action.payload;
     },
   },
 });
 
-export const { setCurrentPage, setSelectedBook, addBook } = bookSlice.actions;
+export const {
+  setCurrentPage,
+  setSelectedBook,
+  addBook,
+  setBook,
+} = bookSlice.actions;
 
 const {
   setBooks,
