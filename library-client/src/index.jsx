@@ -1,13 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import ErrorBoundary from 'components/common/ErrorBoundary';
+import AppProvider from 'components/common/AppProvider';
+import AppThemeProvider from 'components/common/AppThemeProvider';
 import reportWebVitals from './reportWebVitals';
+import App from './App';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <ErrorBoundary>
+    <AppProvider>
+      <AppThemeProvider>
+        <App />
+      </AppThemeProvider>
+    </AppProvider>
+  </ErrorBoundary>,
   document.getElementById('root'),
 );
 

@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./bin/www",
+    "populate-db": "node scripts/populate.database.js",
     "test": "mocha --recursive tests --reporter dot",
     "test-watch": "mocha --recursive tests --reporter min --watch"
   },
@@ -28,6 +29,7 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
+    "axios": "^0.21.1",
     "chai": "^4.2.0",
     "eslint": "^7.18.0",
     "mocha": "^8.2.1",
