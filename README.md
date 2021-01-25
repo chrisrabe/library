@@ -3,8 +3,31 @@ A book management application created for Infoxchange's full stack coding challe
 implemented using the MERN stack. MongoDB is used as the app's storage component, Express and NodeJS
 used to implement the backend component, and React is used to implement the front-end component.
 
+[Watch demo here](docs/demo.mp4)
+
+![home](docs/home.png)
+
+![details](docs/book-details.png)
+
 # Getting Started
+## Prerequisites
+- [Docker](https://docs.docker.com/get-docker/) - Setting up local mongoDB
+- [NodeJS](https://nodejs.org/en/) - running both server and client
+
 ## Setting up local backend
-1. Install [Docker](https://docs.docker.com/get-docker/)
-2. Run the `start-dbs.sh` script to create MongoDB container
-3. Run `npm start` to start local server
+```shell
+cd backend
+./scripts/start-db.sh # creates mongo container
+npm run populate-db # populate database with values
+npm start # start the backend server
+```
+
+## Setting up local client
+```shell
+cd library-client
+npm install
+npm start
+```
+
+# Testing
+In either `library-client` or `backend` directory, run `npm run test`.
