@@ -1,5 +1,5 @@
 # Library
-A book management application created for Infoxchange's full stack coding challenge. The project is
+A book management application. The project is
 implemented using the MERN stack. MongoDB is used as the app's storage component, Express and NodeJS
 used to implement the backend component, and React is used to implement the front-end component.
 
